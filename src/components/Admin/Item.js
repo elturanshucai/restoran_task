@@ -25,10 +25,10 @@ function Item({ item, index }) {
             <div className='list'>
                 <div className='item'>
                     <div>{index + 1}</div>
-                    <div>{item[0].table}</div>
-                    <div>{item[0].worker}</div>
+                    <div>{item[0]?.table}</div>
+                    <div>{item[0]?.worker}</div>
                     <div>{toplam} AZN</div>
-                    <div>{item[0].date}</div>
+                    <div>{item[0]?.date}</div>
                     <button id='look' onClick={() => setDisplay(true)} >Bax</button>
                 </div>
 
