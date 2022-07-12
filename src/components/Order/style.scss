@@ -156,7 +156,7 @@ input[type=number]::-webkit-inner-spin-button {
             }
         }
 
-        .end {
+        .end, .close {
             background-color: red;
             padding: 10px 20px;
             width: 25%;
@@ -169,6 +169,10 @@ input[type=number]::-webkit-inner-spin-button {
 
         .end:hover {
             background-color: #ed1b2e;
+        }
+
+        .success{
+            background-color: rgb(29, 163, 29);
         }
 
         .footer {

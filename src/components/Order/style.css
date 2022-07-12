@@ -109,7 +109,7 @@ input[type=number]::-webkit-inner-spin-button {
         background-color: #ed1b2e;
         color: white;
         padding-top: 5px; }
-    .order .orderlist .end {
+    .order .orderlist .end, .order .orderlist .close {
       background-color: red;
       padding: 10px 20px;
       width: 25%;
@@ -120,6 +120,8 @@ input[type=number]::-webkit-inner-spin-button {
       cursor: pointer; }
     .order .orderlist .end:hover {
       background-color: #ed1b2e; }
+    .order .orderlist .success {
+      background-color: #1da31d; }
     .order .orderlist .footer {
       display: flex;
       justify-content: space-between; }

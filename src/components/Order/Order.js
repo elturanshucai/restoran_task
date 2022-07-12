@@ -74,11 +74,12 @@ function Order() {
         dispatch(cancelOrder(index))
     }
     const end = () => {
-        dispatch(setOrders())
         setOrder(!order)
+        dispatch(setOrders())
         setPrice(foods[0].price)
         setQuantity(0)
     }
+
     data.quantity = quantity
     data.price = price
     data.table = table
@@ -175,7 +176,16 @@ function Order() {
                                 </div>
                             ))}
                             <div className="footer">
-                                <button className="end" onClick={end} type="button">{basket.length > 0 ? 'Sonlandır' : 'Ləğv et'}</button>
+                                {
+                                    basket.length > 0 ?
+                                        <button className="end" onClick={end} type="button">Bitir</button> :
+                                        <>
+                                            <button className="close" onClick={() => setOrder(!order)}>Bağla</button>
+                                        </>
+
+                                }
+
+
                                 <p>Cəmi : {total} AZN</p>
                             </div>
                         </div>
