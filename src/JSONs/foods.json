@@ -1,0 +1,21 @@
+[
+    {"id":"1", "food":"Toyuq dönəri", "price": "2", "time": "3"},
+    {"id":"2", "food":"Ət dönəri", "price": "2.5", "time": 3},
+    {"id":"3", "food":"İskəndər", "price": "9", "time": 6},
+    {"id":"4", "food":"Porsion dönər", "price": "4.7", "time": 3},
+    {"id":"5", "food":"Alman dönəri", "price": "3.9", "time": 4},
+    {"id":"6", "food":"Paytaxt salatı", "price": "2", "time": 1},
+    {"id":"7", "food":"Çuğundur salatı", "price": "2", "time": 1},
+    {"id":"8", "food":"Vegan Pizza", "price": "6.8", "time": 5},
+    {"id":"9", "food":"Pizza", "price": "6.8", "time": 5},
+    {"id":"10", "food":"Plovüstü toyuq", "price": "4", "time": 4},
+    {"id":"11", "food":"Yarpaq dolması", "price": "2.7", "time": 2},
+    {"id":"12", "food":"Kələm dolması", "price": "2.7", "time": 2},
+    {"id":"13", "food":"Mərci", "price": "1.8", "time": 3},
+    {"id":"14", "food":"Tabaka", "price": "10", "time": 6},
+    {"id":"15", "food":"Coca-Cola 0.3", "price": "1", "time": 1},
+    {"id":"16", "food":"Coca-Cola 0.5", "price": "1.5", "time": 1},
+    {"id":"17", "food":"Sprite 0.3", "price": "1", "time": 1},
+    {"id":"18", "food":"Sprite 0.5", "price": "1.5", "time": 1},
+    {"id":"19", "food":"Ayran", "price": "0.7", "time": 1}
+]

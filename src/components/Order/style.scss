@@ -1,0 +1,250 @@
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.order {
+    width: 60%;
+    margin: 0 auto;
+
+    .orderselect {
+        display: flex;
+        gap: 30px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+
+        label {
+            display: block;
+            width: 40%;
+
+            select {
+                width: 100%;
+                outline: none;
+                padding: 5px 10px;
+                margin-top: 10px;
+                font-size: 16px;
+
+                option {
+                    font-size: 16px;
+                }
+            }
+        }
+
+    }
+
+    .start {
+        padding: 15px 30px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        font-size: 20px;
+        background-color: #7552cc;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        font-weight: 500;
+        letter-spacing: 1px;
+        cursor: pointer;
+    }
+
+    .start:hover {
+        background-color: rgb(36, 36, 156);
+        transform: scale(1.1);
+    }
+
+    .add {
+        padding: 10px 20px;
+        background-color: #00c16e;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .add:hover {
+        background-color: #009f4d;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        label {
+            display: block;
+            width: 100%;
+            justify-content: space-between;
+
+            span {
+                display: inline-block;
+            }
+
+            select {
+                margin-left: 10px;
+                padding: 5px;
+                font-size: 18px;
+                width: 80%;
+                outline: none;
+                border: 1px solid rgb(30, 30, 122);
+
+                option {
+                    width: 90%;
+                }
+
+            }
+
+            input {
+                margin-left: 10px;
+                outline: none;
+                padding: 5px;
+                font-size: 20px;
+                width: 20%;
+                border: none;
+            }
+        }
+
+        .amountinfo {
+            display: flex;
+            gap: 20px;
+            color: #009f4d;
+            font-weight: 500;
+            font-size: 20px;
+        }
+    }
+
+    .orderlist {
+        margin-top: 30px;
+        margin-bottom: 50px;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        border: 1px dashed gray;
+        padding: 20px 10px;
+        gap: 15px;
+
+        span {
+            display: block;
+            width: 14%;
+            text-align: center;
+        }
+
+        .listheader {
+            display: flex;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .listitem {
+            display: flex;
+            gap: 10px;
+            font-weight: 400;
+
+            span:last-child {
+                color: red;
+                cursor: pointer;
+            }
+
+            #cooking {
+                background-color: #009f4d;
+                color: white;
+                padding-top: 5px;
+            }
+
+            #canceling {
+                background-color: #ed1b2e;
+                color: white;
+                padding-top: 5px;
+            }
+        }
+
+        .end {
+            background-color: red;
+            padding: 10px 20px;
+            width: 25%;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .end:hover {
+            background-color: #ed1b2e;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .order {
+        width: 95%;
+        .start {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .orderselect {
+            gap: 20px;
+            padding: 0 10px;
+
+            label {
+                select {
+                    width: 90%;
+
+                    option {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        form {
+            label {
+                select {
+                    margin-top: 5px;
+                    margin-left: 0;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .orderlist {
+            gap: 10px;
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            padding: 10px 0;
+
+            .listitem {
+
+                #cooking,
+                #canceling {
+                    padding-top: 5px;
+                    font-size: 12px;
+                    height: 30px;
+                }
+            }
+
+            .end {
+                padding: 10px 5px;
+                font-size: 14px;
+                width: 20%;
+            }
+
+            .footer {
+                padding: 0 10px;
+            }
+        }
+    }
+
+}
