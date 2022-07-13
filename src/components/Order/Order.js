@@ -4,19 +4,23 @@ import tables from '../../JSONs/tables.json'
 import workers from '../../JSONs/workers.json'
 import foods from '../../JSONs/foods.json'
 import './style.css'
-import { cancelOrder, setBasket, setOrders } from "../../store/reducers/orderReducer";
+import { cancelOrder, setBasket, setOrders, setQuantity, trueSuccess } from "../../store/reducers/orderReducer";
 
 function Order() {
 
     const [order, setOrder] = useState(false)
-    const [quantity, setQuantity] = useState(0)
+    const quantity=useSelector(state=>state.orderReducer.quantity)
+    const orders=useSelector(state=>state.orderReducer.orders)
     const [price, setPrice] = useState(foods[0].price)
     const [table, setTable] = useState(tables[0].masa)
     const [food, setFood] = useState(foods[0].food)
     const [worker, setWorker] = useState(workers[0].name)
     const [time, setTime] = useState(foods[0].time)
     const [disabled, setDisabled] = useState(true)
+    const [success, setSucces]=useState(false)
+
     const dispatch = useDispatch()
+
     const data = {}
 
     const start = () => {
@@ -29,7 +33,7 @@ function Order() {
         else {
             setDisabled(true)
         }
-        setQuantity(parseInt(e.target.value))
+        dispatch(setQuantity(parseInt(e.target.value)))
     }
 
     let eat = foods[0].food
@@ -74,10 +78,19 @@ function Order() {
         dispatch(cancelOrder(index))
     }
     const end = () => {
-        setOrder(!order)
-        dispatch(setOrders())
+        dispatch(setOrders({arr: basket, success:false}))
         setPrice(foods[0].price)
-        setQuantity(0)
+        dispatch(setQuantity(0))
+        setSucces(true)
+    }
+    const cls =()=>{
+        setOrder(!order)
+        setSucces(false)
+    }
+    const scs=()=>{
+        setSucces(false)
+        setOrder(!order)
+        dispatch(trueSuccess(orders.length-1))
     }
 
     data.quantity = quantity
@@ -180,9 +193,13 @@ function Order() {
                                     basket.length > 0 ?
                                         <button className="end" onClick={end} type="button">Bitir</button> :
                                         <>
-                                            <button className="close" onClick={() => setOrder(!order)}>Bağla</button>
+                                            <button className="close" onClick={cls}>Bağla</button>
                                         </>
 
+                                }
+                                {
+                                    success ?
+                                    <button className="scsButton" onClick={scs}>Çatdırıldı</button>:null
                                 }
 
 

@@ -102,14 +102,36 @@
       justify-content: space-between; }
       .admin .listtitle div {
         font-size: 14px; }
+      .admin .listtitle .sira {
+        width: 5%; }
+      .admin .listtitle .masa {
+        width: 10%; }
+      .admin .listtitle .worker {
+        width: 10%; }
     .admin .orderlist {
       padding: 5px; }
+      .admin .orderlist p {
+        font-weight: 500;
+        font-size: 20px;
+        margin-bottom: 10px; }
+      .admin .orderlist p:first-child {
+        color: red; }
       .admin .orderlist .item {
         padding: 5px 0;
         justify-content: space-between; }
         .admin .orderlist .item div {
           width: 16%;
           text-align: center; }
+        .admin .orderlist .item .sira {
+          width: 5%; }
+        .admin .orderlist .item .masa {
+          width: 10%; }
+        .admin .orderlist .item .worker {
+          width: 10%; }
+        .admin .orderlist .item .status {
+          width: 20%; }
+        .admin .orderlist .item .notfinish {
+          color: red; }
         .admin .orderlist .item #look {
           padding: 5px 2px;
           margin-left: 10px; }

@@ -16,12 +16,15 @@ function Admin() {
     const orders = useSelector(state => state.orderReducer.orders)
     const localOrders = JSON.parse(localStorage.getItem('orders'))
 
+    const trueOrders = localOrders?.filter(item => item.success == true)
+    const trueSCS = orders.filter(item => item.success == true)
 
-    let sifarisler1 = orders.map(item => (
-        item.filter(order => order.cancel == 'no')
+
+    let sifarisler1 = trueSCS.map(item => (
+        item.arr.filter(order => order.cancel == 'no')
     ))
-    let sifarisler2 = localOrders?.map(item => (
-        item.filter(order => order.cancel == 'no')
+    let sifarisler2 = trueOrders?.map(item => (
+        item.arr.filter(order => order.cancel == 'no')
     ))
     let total = 0
     sifarisler1.map(order => (
@@ -43,33 +46,40 @@ function Admin() {
                 orders.length > 0 ?
                     <>
                         <div className='listtitle'>
-                            <div>Sira</div>
-                            <div>Masa</div>
-                            <div>İsci</div>
-                            <div>Mebleg</div>
-                            <div>Tarix</div>
-                            <div>Goster</div>
+                            <div className='sira'>Sira</div>
+                            <div className='masa'>Masa</div>
+                            <div className='worker'>İsci</div>
+                            <div className='toplam'>Mebleg</div>
+                            <div className='tarix'>Tarix</div>
+                            <div className='status'>Sonlanıb</div>
+                            <div className='show'>Goster</div>
                         </div>
                         <div className='orderlist'>
-                            {orders?.map((order, index) => (
-                                <Item key={index} item={order} index={index} />
-                            ))}
+                            {
+                                orders.map((item, index) => (
+                                    <Item key={index} item={item} index={index} success={item.success} />
+                                ))
+                            }
+
                         </div>
                     </>
                     :
                     <>
                         <div className='listtitle'>
-                            <div>Sira</div>
-                            <div>Masa</div>
-                            <div>İsci</div>
-                            <div>Mebleg</div>
-                            <div>Tarix</div>
-                            <div>Goster</div>
+                            <div className='sira'>Sira</div>
+                            <div className='masa'>Masa</div>
+                            <div className='worker'>İsci</div>
+                            <div className='toplam'>Mebleg</div>
+                            <div className='tarix'>Tarix</div>
+                            <div className='status'>Sonlanıb</div>
+                            <div className='show'>Goster</div>
                         </div>
                         <div className='orderlist'>
-                            {localOrders?.map((order, index) => (
-                                <Item key={index} item={order} index={index} />
-                            ))}
+                            {
+                                localOrders?.map((item, index) => (
+                                    <Item key={index} item={item} index={index} success={item.success} />
+                                ))
+                            }
                         </div>
                     </>
             }

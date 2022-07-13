@@ -120,14 +120,21 @@ input[type=number]::-webkit-inner-spin-button {
       cursor: pointer; }
     .order .orderlist .end:hover {
       background-color: #ed1b2e; }
-    .order .orderlist .success {
-      background-color: #1da31d; }
     .order .orderlist .footer {
       display: flex;
       justify-content: space-between; }
       .order .orderlist .footer p {
         font-size: 20px;
         font-weight: 600; }
+      .order .orderlist .footer .scsButton {
+        background-color: #009f4d;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        width: 15%;
+        color: white;
+        font-size: 16px;
+        cursor: pointer; }
 
 @media screen and (max-width: 700px) {
   .order {
@@ -164,6 +171,8 @@ input[type=number]::-webkit-inner-spin-button {
         font-size: 14px;
         width: 20%; }
       .order .orderlist .footer {
-        padding: 0 10px; } }
+        padding: 0 10px; }
+        .order .orderlist .footer .scsButton {
+          width: 30%; } }
 
 /*# sourceMappingURL=style.css.map */

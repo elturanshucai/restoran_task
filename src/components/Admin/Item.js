@@ -1,13 +1,13 @@
 import './style.css'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { removeOrder } from '../../store/reducers/orderReducer'
+import { removeOrder  } from '../../store/reducers/orderReducer'
 import { FaTrash } from 'react-icons/fa'
 
-function Item({ item, index }) {
+function Item({ item, index, success }) {
     const dispatch = useDispatch()
     const [display, setDisplay] = useState(false)
-    let sifarisler = item.filter(item => item.cancel == 'no')
+    let sifarisler = item.arr.filter(item => item.cancel == 'no')
     let toplam = sifarisler.reduce((acc, element) => {
         return acc + (element.quantity * element.price)
     }, 0)
@@ -24,11 +24,15 @@ function Item({ item, index }) {
         <>
             <div className='list'>
                 <div className='item'>
-                    <div>{index + 1}</div>
-                    <div>{item[0]?.table}</div>
-                    <div>{item[0]?.worker}</div>
-                    <div>{toplam} AZN</div>
-                    <div>{item[0]?.date}</div>
+                    <div className='sira'>{index + 1}</div>
+                    <div className='masa'>{item.arr[0]?.table}</div>
+                    <div className='worker'>{item.arr[0]?.worker}</div>
+                    <div className='toplam'>{toplam} AZN</div>
+                    <div className='tarix'>{item.arr[0]?.date}</div>
+                    {
+                        success ?
+                        <div className='status finish'>Bəli</div>:<div className='status notfinish'>Xeyr</div>
+                    }
                     <button id='look' onClick={() => setDisplay(true)} >Bax</button>
                 </div>
 
@@ -40,7 +44,7 @@ function Item({ item, index }) {
                                 <div onClick={() => setDisplay(false)} id='hide'>Gizlət</div>
                             </div>
                             {
-                                item.map((item, index) => (
+                                item.arr.map((item, index) => (
                                     <div className='iteminner' key={index}>
                                         <div>{item.food}</div>
                                         <div>{item.price} AZN</div>
