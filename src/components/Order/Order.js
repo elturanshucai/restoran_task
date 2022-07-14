@@ -51,6 +51,12 @@ function Order() {
     const basket = useSelector(state => state.orderReducer.basket)
     const total = useSelector(state => state.orderReducer.total)
 
+    let cem =total
+    let dock = String(cem).indexOf('.')
+    if (dock !== -1) {
+        cem = String(cem).slice(0, dock + 3)
+    }
+
     const changeTable = (e) => {
         setTable(e.target.value)
     }
@@ -93,6 +99,12 @@ function Order() {
         dispatch(trueSuccess(orders.length-1))
     }
 
+    let mebleg=quantity*price
+    let noqte = String(mebleg).indexOf('.')
+    if (noqte !== -1) {
+        mebleg = String(mebleg).slice(0, noqte + 3)
+    }
+
     data.quantity = quantity
     data.price = price
     data.table = table
@@ -100,7 +112,10 @@ function Order() {
     data.food = food
     data.time = time
     data.cancel = 'no'
-
+    data.mebleg=mebleg
+    
+    
+    
 
 
     return (
@@ -146,7 +161,7 @@ function Order() {
                             </label>
                             <div className="amountinfo">
                                 <div>Məbləğ</div>
-                                <div className="amount">{quantity * price} AZN</div>
+                                <div className="amount">{mebleg} AZN</div>
                             </div>
                             <button className="add" type="button" onClick={add} disabled={disabled} >Əlavə et</button>
                         </form>
@@ -164,7 +179,7 @@ function Order() {
                                 <div className="listitem" key={index}>
                                     <span>{item.table}</span>
                                     <span>{item.food}</span>
-                                    <span>{item.price * item.quantity} AZN</span>
+                                    <span>{item.mebleg} AZN</span>
                                     <span>{item.quantity}</span>
                                     {
                                         item.cancel == 'no' ?
@@ -203,7 +218,7 @@ function Order() {
                                 }
 
 
-                                <p>Cəmi : {total} AZN</p>
+                                <p>Cəmi : {cem} AZN</p>
                             </div>
                         </div>
                     </>

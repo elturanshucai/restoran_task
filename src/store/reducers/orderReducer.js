@@ -7,6 +7,8 @@ export const orderSlice = createSlice({
         orderBasket: [],
         total: 0,
         orders: [],
+        trueOrders : [],
+        falseOrders: [],
         myorder: {},
         sign: false,
         admin: {

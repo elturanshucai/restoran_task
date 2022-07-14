@@ -32,6 +32,10 @@ function Admin() {
             return acc + (element.price * element.quantity)
         }, 0)
     ))
+    let noqte1 = String(total).indexOf('.')
+    if(noqte1!==-1){
+        total=String(total).slice(0, noqte1 + 3)
+    }
 
     let localTotal = 0
     sifarisler2?.map(order => (
@@ -39,6 +43,10 @@ function Admin() {
             return acc + (element.price * element.quantity)
         }, 0)
     ))
+    let noqte2 = String(localTotal).indexOf('.')
+    if(noqte2!==-1){
+        localTotal=String(localTotal).slice(0, noqte2 + 3)
+    }
 
     return (
         <div className='admin'>
