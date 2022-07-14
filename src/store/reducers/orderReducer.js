@@ -7,8 +7,6 @@ export const orderSlice = createSlice({
         orderBasket: [],
         total: 0,
         orders: [],
-        trueOrders : [],
-        falseOrders: [],
         myorder: {},
         sign: false,
         admin: {
@@ -25,19 +23,19 @@ export const orderSlice = createSlice({
                 return acc + (item.quantity * item.price)
             }, 0)
         },
-        setOrders: (state, {payload}) => {
+        setOrders: (state, { payload }) => {
             let orders = JSON.parse(localStorage.getItem('orders'))
             if (orders) {
                 state.orders = orders
             }
-            state.myorder=payload
-            state.orders=[...state.orders, state.myorder]
+            state.myorder = payload
+            state.orders = [...state.orders, state.myorder]
             localStorage.setItem('orders', JSON.stringify(state.orders))
             state.total = 0
             state.basket = []
         },
-        trueSuccess: (state, {payload})=>{
-            state.orders[payload].success=true
+        trueSuccess: (state, { payload }) => {
+            state.orders[payload].success = true
             localStorage.setItem('orders', JSON.stringify(state.orders))
             state.total = 0
         },
@@ -45,8 +43,9 @@ export const orderSlice = createSlice({
             state.orders = payload
         },
         removeOrder: (state, { payload }) => {
-                state.orders = state.orders.filter((item, index) => (index !== payload))
-                localStorage.setItem('orders', JSON.stringify(state.orders))
+            state.orders=JSON.parse(localStorage.getItem('orders'))
+            state.orders = state.orders.filter((item, index) => (index !== payload))
+            localStorage.setItem('orders', JSON.stringify(state.orders))
         },
         cancelOrder: (state, { payload }) => {
             state.basket.map((item, index) => {
@@ -68,11 +67,11 @@ export const orderSlice = createSlice({
         logout: () => {
             localStorage.removeItem('lgn')
         },
-        setQuantity: (state, {payload})=>{
-            state.quantity=payload
+        setQuantity: (state, { payload }) => {
+            state.quantity = payload
         }
     }
 })
 
-export const { setBasket, setOrders, cancelOrder, setSign, login, logout, setLocalOrders, removeOrder, setQuantity, trueSuccess} = orderSlice.actions
+export const { setBasket, setOrders, cancelOrder, setSign, login, logout, setLocalOrders, removeOrder, setQuantity, trueSuccess } = orderSlice.actions
 export default orderSlice.reducer
