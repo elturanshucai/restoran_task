@@ -9,22 +9,24 @@ import { cancelOrder, setBasket, setOrders, setQuantity, trueSuccess } from "../
 function Order() {
 
     const [order, setOrder] = useState(false)
-    const quantity=useSelector(state=>state.orderReducer.quantity)
-    const orders=useSelector(state=>state.orderReducer.orders)
+    const quantity = useSelector(state => state.orderReducer.quantity)
+    const orders = useSelector(state => state.orderReducer.orders)
     const [price, setPrice] = useState(foods[0].price)
     const [table, setTable] = useState(tables[0].masa)
     const [food, setFood] = useState(foods[0].food)
     const [worker, setWorker] = useState(workers[0].name)
     const [time, setTime] = useState(foods[0].time)
     const [disabled, setDisabled] = useState(true)
-    const [success, setSucces]=useState(false)
+    const [success, setSucces] = useState(false)
+    const [select, setSelect]=useState(false)
 
     const dispatch = useDispatch()
 
     const data = {}
 
     const start = () => {
-        setOrder(!order)
+        setOrder(true)
+        setSelect(true)
     }
     const inputChange = (e) => {
         if (e.target.value > 0) {
@@ -51,7 +53,7 @@ function Order() {
     const basket = useSelector(state => state.orderReducer.basket)
     const total = useSelector(state => state.orderReducer.total)
 
-    let cem =total
+    let cem = total
     let dock = String(cem).indexOf('.')
     if (dock !== -1) {
         cem = String(cem).slice(0, dock + 3)
@@ -84,22 +86,22 @@ function Order() {
         dispatch(cancelOrder(index))
     }
     const end = () => {
-        dispatch(setOrders({arr: basket, success:false}))
+        dispatch(setOrders({ arr: basket, success: false }))
         setPrice(foods[0].price)
         dispatch(setQuantity(0))
         setSucces(true)
+        setOrder(false)
     }
-    const cls =()=>{
-        setOrder(!order)
-        setSucces(false)
+    const cls = () => {
+        setOrder(false)
     }
-    const scs=()=>{
+    const scs = () => {
         setSucces(false)
-        setOrder(!order)
-        dispatch(trueSuccess(orders.length-1))
+        setSelect(false)
+        dispatch(trueSuccess(orders.length - 1))
     }
 
-    let mebleg=quantity*price
+    let mebleg = quantity * price
     let noqte = String(mebleg).indexOf('.')
     if (noqte !== -1) {
         mebleg = String(mebleg).slice(0, noqte + 3)
@@ -112,17 +114,15 @@ function Order() {
     data.food = food
     data.time = time
     data.cancel = 'no'
-    data.mebleg=mebleg
-    
-    
-    
+    data.mebleg = mebleg
 
+    const orderBasket = useSelector(state => state.orderReducer.orderBasket)
 
     return (
         <div className="order">
             <div className="orderselect">
                 <label>Masa :
-                    <select disabled={order} onChange={changeTable}>
+                    <select disabled={select} onChange={changeTable}>
                         {
                             tables.map(item => (
                                 <option value={item.masa} key={item.masa} >{item.yer}</option>
@@ -131,7 +131,7 @@ function Order() {
                     </select>
                 </label>
                 <label>İşçi :
-                    <select disabled={order} onChange={changeWorker}>
+                    <select disabled={select} onChange={changeWorker}>
                         {
                             workers.map(item => (
                                 <option value={item.name} key={item.id}>{item.name}</option>
@@ -212,18 +212,26 @@ function Order() {
                                         </>
 
                                 }
-                                {
-                                    success ?
-                                    <button className="scsButton" onClick={scs}>Çatdırıldı</button>:null
-                                }
-
-
                                 <p>Cəmi : {cem} AZN</p>
                             </div>
                         </div>
                     </>
                     :
-                    <button className="start" type='button' onClick={start}>Sifarişə Başla</button>
+                    <button className="start" type='button' disabled={select} onClick={start}>Sifarişə Başla</button>
+            }
+            {
+                success ?
+                    <>
+                        {orderBasket.map((item, index) => (
+                            <div className="check" key={index}>
+                                <span>{item.table}</span>
+                                <span>{item.food}</span>
+                                <span>Cəmi : {item.mebleg} AZN</span>
+                            </div>
+                        ))}
+                        <button className="scsButton" onClick={scs}>Çatdırıldı</button>
+                    </>
+                    : null
             }
         </div>
     )

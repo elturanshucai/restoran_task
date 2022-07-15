@@ -35,6 +35,28 @@ input[type=number]::-webkit-inner-spin-button {
   .order .start:hover {
     background-color: #24249c;
     transform: scale(1.1); }
+  .order .start:disabled {
+    background-color: gray;
+    transform: scale(1);
+    cursor: default; }
+  .order .scsButton {
+    background-color: #009f4d;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px 0;
+    width: 15%;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 30px; }
+  .order .check {
+    display: flex;
+    gap: 20px;
+    font-weight: 400;
+    margin-bottom: 20px; }
+  .order .scsButton:hover {
+    background-color: #087a40; }
   .order .add {
     padding: 10px 20px;
     background-color: #00c16e;
@@ -45,6 +67,9 @@ input[type=number]::-webkit-inner-spin-button {
     cursor: pointer; }
   .order .add:hover {
     background-color: #009f4d; }
+  .order .add:disabled {
+    background-color: gray;
+    cursor: default; }
   .order form {
     display: flex;
     flex-direction: column;
@@ -109,7 +134,8 @@ input[type=number]::-webkit-inner-spin-button {
         background-color: #ed1b2e;
         color: white;
         padding-top: 5px; }
-    .order .orderlist .end, .order .orderlist .close {
+    .order .orderlist .end,
+    .order .orderlist .close {
       background-color: red;
       padding: 10px 20px;
       width: 25%;
@@ -126,15 +152,6 @@ input[type=number]::-webkit-inner-spin-button {
       .order .orderlist .footer p {
         font-size: 20px;
         font-weight: 600; }
-      .order .orderlist .footer .scsButton {
-        background-color: #009f4d;
-        border: none;
-        outline: none;
-        border-radius: 10px;
-        width: 15%;
-        color: white;
-        font-size: 16px;
-        cursor: pointer; }
 
 @media screen and (max-width: 700px) {
   .order {

@@ -49,6 +49,35 @@ input[type=number]::-webkit-inner-spin-button {
         background-color: rgb(36, 36, 156);
         transform: scale(1.1);
     }
+    .start:disabled{
+        background-color: gray;
+        transform: scale(1);
+        cursor: default;
+    }
+
+    .scsButton {
+        background-color: #009f4d;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        padding: 10px 0;
+        width: 15%;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
+
+    .check {
+        display: flex;
+        gap: 20px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    .scsButton:hover {
+        background-color: #087a40;
+    }
 
     .add {
         padding: 10px 20px;
@@ -62,6 +91,10 @@ input[type=number]::-webkit-inner-spin-button {
 
     .add:hover {
         background-color: #009f4d;
+    }
+    .add:disabled{
+        background-color: gray;
+        cursor: default;
     }
 
     form {
@@ -156,7 +189,8 @@ input[type=number]::-webkit-inner-spin-button {
             }
         }
 
-        .end, .close {
+        .end,
+        .close {
             background-color: red;
             padding: 10px 20px;
             width: 25%;
@@ -180,16 +214,6 @@ input[type=number]::-webkit-inner-spin-button {
                 font-size: 20px;
                 font-weight: 600;
             }
-            .scsButton{
-                background-color: #009f4d;
-                border: none;
-                outline: none;
-                border-radius: 10px;
-                width: 15%;
-                color: white;
-                font-size: 16px;
-                cursor: pointer;
-            }
         }
     }
 }
@@ -197,6 +221,7 @@ input[type=number]::-webkit-inner-spin-button {
 @media screen and (max-width: 700px) {
     .order {
         width: 95%;
+
         .start {
             padding: 10px;
             margin-top: 10px;
@@ -254,7 +279,8 @@ input[type=number]::-webkit-inner-spin-button {
 
             .footer {
                 padding: 0 10px;
-                .scsButton{
+
+                .scsButton {
                     width: 30%;
                 }
             }

@@ -37,7 +37,6 @@ export const orderSlice = createSlice({
         trueSuccess: (state, { payload }) => {
             state.orders[payload].success = true
             localStorage.setItem('orders', JSON.stringify(state.orders))
-            state.total = 0
         },
         setLocalOrders: (state, { payload }) => {
             state.orders = payload
