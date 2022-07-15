@@ -93,6 +93,7 @@ function Order() {
         setOrder(false)
     }
     const cls = () => {
+        setSelect(false)
         setOrder(false)
     }
     const scs = () => {
