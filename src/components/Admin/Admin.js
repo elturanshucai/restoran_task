@@ -15,7 +15,6 @@ function Admin() {
     }
     const orders = useSelector(state => state.orderReducer.orders)
     const localOrders = JSON.parse(localStorage.getItem('orders'))
-
     const trueOrders = localOrders?.filter(item => item.success == true)
     const trueSCS = orders.filter(item => item.success == true)
 
@@ -65,7 +64,7 @@ function Admin() {
                         <div className='orderlist'>
                             {
                                 orders.map((item, index) => (
-                                    <Item key={index} item={item} index={index} success={item.success} />
+                                    <Item key={index} item={item} index={index} id={item.id} success={item.success} />
                                 ))
                             }
 
@@ -85,7 +84,7 @@ function Admin() {
                         <div className='orderlist'>
                             {
                                 localOrders?.map((item, index) => (
-                                    <Item key={index} item={item} index={index} success={item.success} />
+                                    <Item key={index} item={item} index={index} id={item.id} success={item.success} />
                                 ))
                             }
                         </div>

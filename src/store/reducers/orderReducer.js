@@ -30,20 +30,38 @@ export const orderSlice = createSlice({
             }
             state.myorder = payload
             state.orders = [...state.orders, state.myorder]
+            state.orders.sort(item=>{
+                if(item.success==false){
+                    return -1
+                }
+                return 0
+            })
             localStorage.setItem('orders', JSON.stringify(state.orders))
             state.total = 0
             state.basket = []
         },
         trueSuccess: (state, { payload }) => {
-            state.orders[payload].success = true
+            let index
+            state.orders.map((item, i)=>{
+                if(item.id==payload){
+                    index= i
+                }
+            })
+            state.orders[index].success = true
+            state.orders.sort(item=>{
+                if(item.success==false){
+                    return -1
+                }
+                return 0
+            })
             localStorage.setItem('orders', JSON.stringify(state.orders))
         },
         setLocalOrders: (state, { payload }) => {
             state.orders = payload
         },
         removeOrder: (state, { payload }) => {
-            state.orders=JSON.parse(localStorage.getItem('orders'))
-            state.orders = state.orders.filter((item, index) => (index !== payload))
+            state.orders = JSON.parse(localStorage.getItem('orders'))
+            state.orders = state.orders.filter(item => (item.id !== payload))
             localStorage.setItem('orders', JSON.stringify(state.orders))
         },
         cancelOrder: (state, { payload }) => {

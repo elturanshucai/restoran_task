@@ -49,7 +49,6 @@ function Order() {
             }
         })
     }
-
     const basket = useSelector(state => state.orderReducer.basket)
     const total = useSelector(state => state.orderReducer.total)
 
@@ -85,8 +84,19 @@ function Order() {
     const cancel = (index) => {
         dispatch(cancelOrder(index))
     }
+
+    let id
+    if(localStorage.getItem('id')){
+        id=localStorage.getItem('id')
+    }
+    else{
+        id=1
+    }
+
     const end = () => {
-        dispatch(setOrders({ arr: basket, success: false }))
+        dispatch(setOrders({ arr: basket, success: false, id:id }))
+        id++
+        localStorage.setItem('id', id)
         setPrice(foods[0].price)
         dispatch(setQuantity(0))
         setSucces(true)
@@ -99,7 +109,7 @@ function Order() {
     const scs = () => {
         setSucces(false)
         setSelect(false)
-        dispatch(trueSuccess(orders.length - 1))
+        dispatch(trueSuccess(id-1))
     }
 
     let mebleg = quantity * price

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { removeOrder  } from '../../store/reducers/orderReducer'
 import { FaTrash } from 'react-icons/fa'
 
-function Item({ item, index, success }) {
+function Item({ item, index, success, id }) {
     const dispatch = useDispatch()
     const [display, setDisplay] = useState(false)
     let sifarisler = item.arr.filter(item => item.cancel == 'no')
@@ -16,7 +16,7 @@ function Item({ item, index, success }) {
         toplam = String(toplam).slice(0, noqte + 3)
     }
     const remove = () => {
-        dispatch(removeOrder(index))
+        dispatch(removeOrder(id))
         setDisplay(false)
     }
 
