@@ -20,7 +20,7 @@ function Main() {
                 <div className='head'>
                     <h2>Görüş Restoranı</h2>
                     <button>
-                        <Link to="/admin" target="_blank">LOGIN</Link>
+                        <Link to="/admin" target="_blank" >LOGIN</Link>
                     </button>
                 </div>
 
